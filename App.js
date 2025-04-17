@@ -6,6 +6,7 @@ import {
 
 } from "react-native";
 import Main from "./components/Main.jsx";
+import { Logo } from "./components/Logo.jsx";
 
 
 
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
+      <Logo/>
     <Main />
     </View>
   );
