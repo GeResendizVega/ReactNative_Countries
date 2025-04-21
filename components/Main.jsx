@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     //borderColor: 'red',
   },
 
-  image: {
+  image: { 
     borderRadius: 50,
     width: 100,
     height: 100,
