@@ -1,4 +1,3 @@
-
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 import {
@@ -13,7 +12,9 @@ import {
   FlatList,
 } from "react-native";
 import { getCountriesByRegion } from "../lib/restcountries.js";
-import { CountryCard } from "./CountryCard.jsx";
+import { AnimatedCountryCard, CountryCard } from "./CountryCard.jsx";
+import { Link } from "expo-router";
+//import { Link } from "expo-router";
 
 export default function Main() {
   const [countries, setCountries] = useState([]);
@@ -28,6 +29,12 @@ export default function Main() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
+
+
+    <Link href="/about"  style={styles.button_navegacion}>
+    Acerca de ...
+    </Link>
+
       <SafeAreaView>
         {countries.length === 0 ? (
           <ActivityIndicator size={'large'} />
@@ -36,9 +43,9 @@ export default function Main() {
             data={countries}
             keyExtractor={(item) => item.name.common}
             renderItem={({ item }) => (
-              <CountryCard
+              <AnimatedCountryCard
                 country={item}
-                onPress={() => console.log("Pais --- " + item.name.common)}
+                index={countries.indexOf(item)}
               />
             )}
           
@@ -96,5 +103,9 @@ const styles = StyleSheet.create({
     width: 200,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  button_navegacion: {
+    color: "blue",
   },
 });
