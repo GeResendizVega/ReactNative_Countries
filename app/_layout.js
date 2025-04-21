@@ -6,7 +6,7 @@ export default function Layout() {
 
     return (
         <View style={{ flex: 1, backgroundColor: "#000" }}>
-           
+            
             <Logo />
             <Slot />
         </View>
