@@ -2,11 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 import {
   StyleSheet,
-  Text,
   View,
-  Image,
   Pressable,
-  ScrollView,
   SafeAreaView,
   ActivityIndicator,
   FlatList,
@@ -14,7 +11,9 @@ import {
 import { getCountriesByRegion } from "../lib/restcountries.js";
 import { AnimatedCountryCard, CountryCard } from "./CountryCard.jsx";
 import { Link } from "expo-router";
-//import { Link } from "expo-router";
+import { InfoIcon } from "./Icons.jsx";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { Logo } from "./Logo.jsx";
 
 export default function Main() {
   const [countries, setCountries] = useState([]);
@@ -22,22 +21,17 @@ export default function Main() {
   useEffect(() => {
     getCountriesByRegion().then((data) => {
       setCountries(data);
-
     });
   }, []);
 
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-
-
-    <Link href="/about"  style={styles.button_navegacion}>
-    Acerca de ...
-    </Link>
+      <Logo />
 
       <SafeAreaView>
         {countries.length === 0 ? (
-          <ActivityIndicator size={'large'} />
+          <ActivityIndicator size={"large"} />
         ) : (
           <FlatList
             data={countries}
@@ -48,10 +42,7 @@ export default function Main() {
                 index={countries.indexOf(item)}
               />
             )}
-          
           />
-            
-           
         )}
       </SafeAreaView>
     </View>
@@ -78,7 +69,7 @@ const styles = StyleSheet.create({
     //borderColor: 'red',
   },
 
-  image: { 
+  image: {
     borderRadius: 50,
     width: 100,
     height: 100,
